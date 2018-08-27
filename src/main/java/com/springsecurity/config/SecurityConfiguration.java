@@ -31,13 +31,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 					.authorizeRequests()
 					//.anyRequest()
 					.antMatchers("/rest/**")
-					//.permitAll();
-					.fullyAuthenticated().and().httpBasic();
+					.permitAll();
+					//.fullyAuthenticated().and().httpBasic();
 		httpSecurity.csrf().disable();
-		//httpSecurity.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);
-		//httpSecurity.formLogin().successHandler(authenticationSuccessHandler);
-		//httpSecurity.formLogin().failureHandler(authenticationFailureHandler);
-		//httpSecurity.logout().logoutSuccessUrl("/");
+		httpSecurity.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);
+		httpSecurity.formLogin().successHandler(authenticationSuccessHandler);
+		httpSecurity.formLogin().failureHandler(authenticationFailureHandler);
+		httpSecurity.logout().logoutSuccessUrl("/");
 	}
 	
 }
